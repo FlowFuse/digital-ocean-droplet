@@ -48,18 +48,27 @@ We now need details of your Email SMTP server
 
 EOF
 
-read -p "Please enter the hostname of your SMTP server: " SMTPHOST
-read -p "Please enter the port for your SMTP server [587]: " SMTPPORT
-read -p "Please enter the usename for your SMTP server: " SMTPUSER
-read -s -p "Please enter the password for your SMTP server: " SMTPPASSWORD
+while : ; do
 
-SMTPPORT=${SMTPPORT:-587}
+    read -p "Please enter the hostname of your SMTP server: " SMTPHOST
+    read -p "Please enter the port for your SMTP server [587]: " SMTPPORT
+    read -p "Please enter the usename for your SMTP server: " SMTPUSER
+    read -s -p "Please enter the password for your SMTP server: " SMTPPASSWORD
+    echo \n
 
-SMTPSECURE=false
+    SMTPPORT=${SMTPPORT:-587}
 
-if [ ${SMTPPASSWORD} -eq 485]; then 
-  SMTPSECURE=true
-fi
+    SMTPSECURE=false
+
+    if [ ${SMTPPORT} -eq 485 ]; then 
+        SMTPSECURE=true
+    fi
+
+    [[ ( -z $SMTPHOST  ||  -z $SMTPUSER ||  -z $SMTPPASSWORD ) ]] || break 
+
+    echo "You must supply all values"
+
+done
 
 cat <<EOF >> /opt/flowforge/etc/flowforge.yml
 email:
@@ -79,6 +88,7 @@ cd /opt/flowforge
 docker compose -p flowforge up -d
 
 cat <<EOF
+
 ********************************************************************************
 
 You can then finish setting up your FlowForge instance at
