@@ -78,8 +78,8 @@
     },
     {
       "type": "file",
-      "source": "files/opt/flowforge/first-login.sh",
-      "destination": "/opt/flowforge/first-login.sh"
+      "source": "files/opt/flowforge/",
+      "destination": "/opt/flowforge/"
     }
   ]
 }
