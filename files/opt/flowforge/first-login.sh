@@ -19,7 +19,7 @@ modify_config()
 }
 
 cat <<EOF
-********************************************************************************"
+********************************************************************************
 
 Welcome to the FlowForge Digital Ocean Droplet Wizard
 
@@ -50,6 +50,9 @@ cat <<EOF
 You can then finish setting up your FlowForge instance at
 
 https://forge.$DOMAIN/setup
+
+If you get a certificate error on first access, please wait a minute for 
+LetsEncrypt to complete provisioning and reload the page.
 
 ********************************************************************************
 
