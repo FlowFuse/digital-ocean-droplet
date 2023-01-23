@@ -41,6 +41,40 @@ select yn in "Yes" "No"; do
 
 done
 
+cat <<EOF
+********************************************************************************
+
+We now need details of your Email SMTP server
+
+EOF
+
+read -p "Please enter the hostname of your SMTP server: " SMTPHOST
+read -p "Please enter the port for your SMTP server [587]: " SMTPPORT
+read -p "Please enter the usename for your SMTP server: " SMTPUSER
+read -s -p "Please enter the password for your SMTP server: " SMTPPASSWORD
+
+SMTPPORT=${SMTPPORT:-587}
+
+SMTPSECURE=false
+
+if [ ${SMTPPASSWORD} -eq 485]; then 
+  SMTPSECURE=true
+fi
+
+cat <<EOF >> /opt/flowforge/etc/flowforge.yml
+email:
+  enabled: true
+  from: '"FlowForge" <flowforge@$DOMAIN>'
+  smtp:
+    host: $SMTPHOST
+    port: $SMTPPORT
+    secure: $SMTPSECURE
+    auth:
+      user: $SMTPUSER
+      pass: $SMTPPASSWORD
+
+EOF
+
 cd /opt/flowforge
 docker compose -p flowforge up -d
 
