@@ -16,11 +16,13 @@ Use this [DNS quickstart](https://docs.digitalocean.com/products/networking/dns/
 
     The domain will be used to generate the host names for each FlowForge project you deploy
 
-#### Setup email
+#### Setup email 
 
 FlowForge needs a way to send email to verify new users and to send invites when users are added to teams. To do this you will need to have details of a SMTP server that will allow you to send email.
 
 If you do not have a SMTP server you can set one up using a service like SparkPost, [Sendgrid](https://marketplace.digitalocean.com/apps/sendgrid), Mailgun.
+
+This can be skipped and added later, but works best when setup for the start.
 
 ## Getting started after deploying
 
