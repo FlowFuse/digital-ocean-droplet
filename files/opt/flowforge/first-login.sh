@@ -44,33 +44,41 @@ done
 cat <<EOF
 ********************************************************************************
 
-We now need details of your Email SMTP server
+Would you like to setup an SMTP Server to allow FlowForge to send email.
+
+This will be used to handle password resets and to invite users to teams.
 
 EOF
+select email in "Yes" "No"; do
 
-while : ; do
+    case $email in
+      Yes ) echo "Setting up email";;
+      No ) break;;
+    esac
 
-    read -p "Please enter the hostname of your SMTP server: " SMTPHOST
-    read -p "Please enter the port for your SMTP server [587]: " SMTPPORT
-    read -p "Please enter the usename for your SMTP server: " SMTPUSER
-    read -s -p "Please enter the password for your SMTP server: " SMTPPASSWORD
-    echo \n
+    while : ; do
 
-    SMTPPORT=${SMTPPORT:-587}
+        read -p "Please enter the hostname of your SMTP server: " SMTPHOST
+        read -p "Please enter the port for your SMTP server [587]: " SMTPPORT
+        read -p "Please enter the usename for your SMTP server: " SMTPUSER
+        read -s -p "Please enter the password for your SMTP server: " SMTPPASSWORD
+        echo \n
 
-    SMTPSECURE=false
+        SMTPPORT=${SMTPPORT:-587}
 
-    if [ ${SMTPPORT} -eq 485 ]; then 
-        SMTPSECURE=true
-    fi
+        SMTPSECURE=false
 
-    [[ ( -z $SMTPHOST  ||  -z $SMTPUSER ||  -z $SMTPPASSWORD ) ]] || break 
+        if [ ${SMTPPORT} -eq 485 ]; then 
+            SMTPSECURE=true
+        fi
 
-    echo "You must supply all values"
+        [[ ( -z $SMTPHOST  ||  -z $SMTPUSER ||  -z $SMTPPASSWORD ) ]] || break 
 
-done
+        echo "You must supply all values"
 
-cat <<EOF >> /opt/flowforge/etc/flowforge.yml
+    done
+
+    cat <<EOF >> /opt/flowforge/etc/flowforge.yml
 email:
   enabled: true
   from: '"FlowForge" <flowforge@$DOMAIN>'
@@ -81,11 +89,12 @@ email:
     auth:
       user: $SMTPUSER
       pass: $SMTPPASSWORD
-
 EOF
+break
+done
 
-cd /opt/flowforge
-docker compose -p flowforge up -d
+# cd /opt/flowforge
+# docker compose -p flowforge up -d
 
 cat <<EOF
 
@@ -98,4 +107,4 @@ https://forge.$DOMAIN/setup
 ********************************************************************************
 
 EOF
-cp -f /etc/skel/.bashrc /root/.bashrc
+# cp -f /etc/skel/.bashrc /root/.bashrc
