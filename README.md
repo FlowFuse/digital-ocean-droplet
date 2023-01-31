@@ -22,9 +22,9 @@ FlowForge needs a way to send email to verify new users and to send invites when
 
 If you do not have a SMTP server you can set one up using a service like SparkPost, [Sendgrid](https://marketplace.digitalocean.com/apps/sendgrid), Mailgun.
 
-This can be skipped and added later, but works best when setup for the start.
+While this can be skipped and added later, but works best when setup for the start.
 
-## Getting started after deploying
+### Getting started after deploying
 
 On your first SSH Login to your droplet or when you connect to the Droplet console you will be greeted by a wizard that will guide you through setting up the domain name and starting your FlowForge instance.
 
