@@ -93,8 +93,8 @@ EOF
 break
 done
 
-# cd /opt/flowforge
-# docker compose -p flowforge up -d
+cd /opt/flowforge
+docker compose -p flowforge up -d
 
 cat <<EOF
 
@@ -107,4 +107,4 @@ https://forge.$DOMAIN/setup
 ********************************************************************************
 
 EOF
-# cp -f /etc/skel/.bashrc /root/.bashrc
+cp -f /etc/skel/.bashrc /root/.bashrc
