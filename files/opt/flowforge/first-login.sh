@@ -44,7 +44,7 @@ done
 cat <<EOF
 ********************************************************************************
 
-Would you like to setup an SMTP Server to allow FlowForge to send email.
+Would you like to setup an SMTP Server to allow FlowForge to send email?
 
 This will be used to handle password resets and to invite users to teams.
 
