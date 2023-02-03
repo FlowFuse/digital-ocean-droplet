@@ -41,10 +41,63 @@ select yn in "Yes" "No"; do
 
 done
 
+cat <<EOF
+********************************************************************************
+
+Would you like to setup an SMTP Server to allow FlowForge to send email?
+
+This will be used to handle password resets and to invite users to teams.
+
+EOF
+select email in "Yes" "No"; do
+
+    case $email in
+      Yes ) echo "Setting up email";;
+      No ) break;;
+    esac
+
+    while : ; do
+
+        read -p "Please enter the hostname of your SMTP server: " SMTPHOST
+        read -p "Please enter the port for your SMTP server [587]: " SMTPPORT
+        read -p "Please enter the usename for your SMTP server: " SMTPUSER
+        read -s -p "Please enter the password for your SMTP server: " SMTPPASSWORD
+        echo \n
+
+        SMTPPORT=${SMTPPORT:-587}
+
+        SMTPSECURE=false
+
+        if [ ${SMTPPORT} -eq 485 ]; then 
+            SMTPSECURE=true
+        fi
+
+        [[ ( -z $SMTPHOST  ||  -z $SMTPUSER ||  -z $SMTPPASSWORD ) ]] || break 
+
+        echo "You must supply all values"
+
+    done
+
+    cat <<EOF >> /opt/flowforge/etc/flowforge.yml
+email:
+  enabled: true
+  from: '"FlowForge" <flowforge@$DOMAIN>'
+  smtp:
+    host: $SMTPHOST
+    port: $SMTPPORT
+    secure: $SMTPSECURE
+    auth:
+      user: $SMTPUSER
+      pass: $SMTPPASSWORD
+EOF
+break
+done
+
 cd /opt/flowforge
 docker compose -p flowforge up -d
 
 cat <<EOF
+
 ********************************************************************************
 
 You can then finish setting up your FlowForge instance at
