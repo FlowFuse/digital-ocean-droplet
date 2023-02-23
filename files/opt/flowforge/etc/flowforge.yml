@@ -62,3 +62,4 @@ broker:
 
 fileStore:
   url: http://file-server:3001
+
