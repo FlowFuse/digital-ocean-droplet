@@ -15,7 +15,6 @@ jobs:
         with:
           version: latest
       - name: install plugin
-        env:
         run: packer plugins install github.com/digitalocean/digitalocean 1.1.1
       - name: build
         env:
