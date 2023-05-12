@@ -5,4 +5,5 @@
 # source .env
 export DIGITALOCEAN_API_TOKEN
 export FF_VERSION
+export FF_DASH_VERSION=`echo $FF_VERSION | sed 's/\./-/g'`
 packer build template.json

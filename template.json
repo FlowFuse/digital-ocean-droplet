@@ -1,7 +1,7 @@
 {
   "variables": {
     "do_api_token": "{{env `DIGITALOCEAN_API_TOKEN`}}",
-    "image_name": "flowforge-1-7-0-snapshot-{{timestamp}}",
+    "image_name": "flowforge-{{evn `FF_DASHED_VERSION`}}-snapshot-{{timestamp}}",
     "apt_packages": "apt-transport-https ca-certificates curl jq linux-image-extra-virtual software-properties-common ",
     "application_name": "FlowForge",
     "application_version": "{{env `FF_VERSION`}}",
