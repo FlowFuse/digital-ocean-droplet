@@ -15,7 +15,9 @@ jobs:
         with:
           version: latest
       - name: install plugin
-        run: packer plugins install github.com/digitalocean/digitalocean >=1.1.1
+        env:
+          FF_VERSION: ${{ github.ref_name }}
+        run: packer plugins install github.com/digitalocean/digitalocean 1.1.1
       - name: build
         env:
           FF_VERSION: ${{ github.ref_name }}
