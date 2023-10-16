@@ -68,7 +68,7 @@ select email in "Yes" "No"; do
 
         SMTPSECURE=false
 
-        if [ ${SMTPPORT} -eq 485 ]; then 
+        if [ ${SMTPPORT} -eq 465 ]; then 
             SMTPSECURE=true
         fi
 
