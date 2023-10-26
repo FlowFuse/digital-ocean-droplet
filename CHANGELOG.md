@@ -1,3 +1,7 @@
+#### 1.13.0: Release
+
+ - Fix default secure port (#25) @hardillb
+
 #### 1.12.2: Release
 
 
