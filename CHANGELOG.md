@@ -1,3 +1,7 @@
+#### 2.2.0: Release
+
+ - Use flowfuse containers (#31) @hardillb
+
 #### 2.1.0: Release
 
 
