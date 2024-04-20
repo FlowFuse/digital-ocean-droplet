@@ -1,7 +1,7 @@
 #!/bin/sh
 
 mkdir -p /opt/flowforge
-curl -L https://github.com/flowforge/docker-compose/archive/refs/tags/v${application_version}.tar.gz | tar zx --one-top-level=/opt/flowforge --strip-components=1
+curl -L https://github.com/FlowFuse/docker-compose/archive/refs/tags/v${application_version}.tar.gz | tar zx --one-top-level=/opt/flowforge --strip-components=1
 docker pull flowfuse/node-red
 docker pull flowfuse/forge-docker
 docker pull flowfuse/file-server
