@@ -82,5 +82,18 @@
       "source": "files/opt/flowforge/",
       "destination": "/opt/flowforge/"
     }
+  ],
+  "post-processors": [
+    {
+      "type": "manifest",
+      "output": "manifest.json",
+      "strip_path": true
+    },
+    {
+      "type": "shell-local",
+      "inline": [
+        "sh scripts/market-place-submit.sh"
+      ]
+    }
   ]
 }
