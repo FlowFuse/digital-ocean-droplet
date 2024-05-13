@@ -1,3 +1,7 @@
+#### 2.4.0: Release
+
+ - Update 015-flowforge.sh (#34) @hardillb
+
 #### 2.3.0: Release
 
 
