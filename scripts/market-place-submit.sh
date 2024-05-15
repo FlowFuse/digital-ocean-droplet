@@ -1,6 +1,6 @@
 #!/bin/bash
 
-IMAGE_ID=$(jq '.builds[-1].artifact_id | split(":") | tonumber' manifest.json)
+IMAGE_ID=$(jq '.builds[-1].artifact_id | split(":")[1] | tonumber' manifest.json)
 # this should come from an app secret, this is new FlowFuse app id
 APP_ID=92052e1d7b34519f48b3b269
 
