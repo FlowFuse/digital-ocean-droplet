@@ -1,3 +1,11 @@
+#### 2.5.0: Release
+
+ - Bump hashicorp/setup-packer from 2.0.0 to 3.1.0 (#40) @app/dependabot
+ - Bump actions/checkout from 3 to 4 (#41) @app/dependabot
+ - Enable dependabot for github actions (#39) @ppawlowski
+ - Add auto market place update script (#38) @hardillb
+ - Update build scripts (#37) @hardillb
+
 #### 2.4.0: Release
 
  - Update 015-flowforge.sh (#34) @hardillb
