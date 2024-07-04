@@ -1,3 +1,6 @@
+#### 2.6.0: Release
+
+
 #### 2.5.0: Release
 
  - Bump hashicorp/setup-packer from 2.0.0 to 3.1.0 (#40) @app/dependabot
