@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -x
 
 IMAGE_ID=$(jq '.builds[-1].artifact_id | split(":")[1] | tonumber' manifest.json)
 # this should come from an app secret, this is new FlowFuse app id
