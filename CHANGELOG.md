@@ -1,3 +1,7 @@
+#### 2.7.0: Release
+
+ - Add -x to bash to print trace (#45) @hardillb
+
 #### 2.6.1: Release
 
 
