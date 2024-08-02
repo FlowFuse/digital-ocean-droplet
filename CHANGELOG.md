@@ -1,3 +1,7 @@
+#### 2.7.1: Release
+ 
+ - Update market-place script (#46) @hardillb
+ 
 #### 2.7.0: Release
 
  - Add -x to bash to print trace (#45) @hardillb
