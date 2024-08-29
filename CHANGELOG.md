@@ -1,3 +1,7 @@
+#### 2.8.0: Release
+
+ - Add more debug to the marketplace update script (#49) @hardillb
+
 #### 2.7.1: Release
  
  - Update market-place script (#46) @hardillb
