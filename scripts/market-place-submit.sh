@@ -20,11 +20,11 @@ EOF
 
 cat update.json
 
-echo ${APP_VERSION}
+echo ${FF_VERSION}
 
-echo https://api.digitalocean.com/api/v1/vendor-portal/apps/${APP_ID}/versions/${APP_VERSION}
+echo https://api.digitalocean.com/api/v1/vendor-portal/apps/${APP_ID}/versions/${FF_VERSION}
 
 curl -X PATCH -H "Content-Type: application/json" -H "Authorization: Bearer ${DIGITALOCEAN_API_TOKEN}" \
-  -d @update.json  https://api.digitalocean.com/api/v1/vendor-portal/apps/${APP_ID}/versions/${APP_VERSION}
+  -d @update.json  https://api.digitalocean.com/api/v1/vendor-portal/apps/${APP_ID}/versions/${FF_VERSION}
 
 rm update.json
