@@ -1,3 +1,8 @@
+#### 2.10.0: Release
+
+ - Fix typo (#55) @hardillb
+ - Make market update script fail the build if it fails (#54) @hardillb
+
 #### 2.9.0: Release
 
  - Hopefully fix auto marketplace updates (#51) @hardillb
