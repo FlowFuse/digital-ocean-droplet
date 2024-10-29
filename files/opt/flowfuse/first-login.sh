@@ -1,40 +1,36 @@
 #!/bin/bash
 
-myip=$(hostname -I | awk '{print$1}')
+# myip=$(hostname -I | awk '{print$1}')
+myip=$(curl -s ipinfo.io/ip)
 
 modify_config()
 {
     DOM=$1
 
-    sed -i "s/example.com/$DOM/" /opt/flowforge/etc/flowforge.yml
-    sed -i 's/base_url: http/base_url: https/' /opt/flowforge/etc/flowforge.yml
-    sed -i 's/  public_url: ws/  public_url: wss/' /opt/flowforge/etc/flowforge.yml
+    cp /opt/flowfuse/.env.example /opt/flowfuse/.env
+    sed -i "s/^DOMAIN=.*/DOMAIN=$DOM/" /opt/flowfuse/.env
+    sed -i "s/^TLS_ENABLED=.*/TLS_ENABLED=true/" /opt/flowfuse/.env
+    echo CREATE_ADMIN=true >> /opt/flowfuse/.env
 
-    sed -i "s/example.com/$DOM/" /opt/flowforge/docker-compose.yml
-    sed -i 's/# //' /opt/flowforge/docker-compose.yml
-
-    #temp fix
-    sed -i 's!initdb.d/setup-db.sh!initdb.d/01-setup-db.sh!' /opt/flowforge/docker-compose.yml
-    sed -i 's!initdb.d/setup-context-db.sh!initdb.d/02-setup-context-db.sh!' /opt/flowforge/docker-compose.yml
 }
 
 cat <<EOF
 ********************************************************************************
 
-Welcome to the FlowForge Digital Ocean Droplet Wizard
+Welcome to the FlowFuse Digital Ocean Droplet Wizard
 
 Please ensure you have an A record DNS entry pointing to $myip for your domain
 
 EOF
 
-read -p "Please enter the domain to use for FlowForge: " DOMAIN
+read -p "Please enter the domain to use for FlowFuse: " DOMAIN
 echo "Using $DOMAIN"
 select yn in "Yes" "No"; do
     case $yn in
         Yes ) modify_config $DOMAIN; break;;
         No ) ;;
     esac
-    read -p "Pease enter the domain to use for FlowForge: " DOMAIN
+    read -p "Pease enter the domain to use for FlowFuse: " DOMAIN
     echo "Using $DOMAIN"
     echo "1) Yes"
     echo "2) No"
@@ -44,7 +40,7 @@ done
 cat <<EOF
 ********************************************************************************
 
-Would you like to setup an SMTP Server to allow FlowForge to send email?
+Would you like to setup an SMTP Server to allow FlowFuse to send email?
 
 This will be used to handle password resets and to invite users to teams.
 
@@ -78,31 +74,45 @@ select email in "Yes" "No"; do
 
     done
 
-    cat <<EOF >> /opt/flowforge/etc/flowforge.yml
-email:
-  enabled: true
-  from: '"FlowForge" <flowforge@$DOMAIN>'
-  smtp:
-    host: $SMTPHOST
-    port: $SMTPPORT
-    secure: $SMTPSECURE
-    auth:
-      user: $SMTPUSER
-      pass: $SMTPPASSWORD
-EOF
+    sed -i "s/^EMAIL_ENABLED=.*/ENAMIL_ENABLED=true/" /opt/flowfuse/.env
+    sed -i "s/^EMAIL_HOST=.*/EMAIL_HOST=$SMTPHOST/" /opt/flowfuse/.env
+    sed -i "s/^EMAIL_PORT=.*/EMAIL_PORT=$SMTPPORT/" /opt/flowfuse/.env
+    sed -i "s/^EMAIL_USER=.*/EMAIL_USER=$SMTPUSER/" /opt/flowfuse/.env
+    sed -i "s/^EMAIL_PASSWORD=.*/EMAIL_PASSWORD=$SMTPPASSWORD/" /opt/flowfuse/.env
+    sed -i "s/^EMAIL_SECURE=.*/EMAIL_SECURE=$SMTPSECURE/" /opt/flowfuse/.env
+
 break
 done
 
-cd /opt/flowforge
-docker compose -p flowforge up -d
+cd /opt/flowfuse
+docker compose --profile autotls up -d --quiet-pull
+
+cat <<EOF
+********************************************************************************
+
+Waiting 30 seconds for startup
+
+********************************************************************************
+EOF
+
+sleep 30
+curl -s -L --insecure "https://forge.$DOMAIN/setup"
+sleep 2
+
+adminPass=$(docker logs flowfuse-forge-1 2>&1 | awk '/\[SETUP\] password/ { print $0}' | jq -r .msg | awk '{ print $3 }')
 
 cat <<EOF
 
 ********************************************************************************
 
-You can then finish setting up your FlowForge instance at
+You can then finish setting up your FlowFuse instance at
 
 https://forge.$DOMAIN/setup
+
+Username: ff-admin
+Password: $adminPass
+
+You will be asked to change the password on login.
 
 If you get a certificate error on first access, please wait a minute for 
 LetsEncrypt to complete provisioning and reload the page.

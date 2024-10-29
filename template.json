@@ -1,11 +1,11 @@
 {
   "variables": {
     "do_api_token": "{{env `DIGITALOCEAN_API_TOKEN`}}",
-    "image_name": "flowforge-{{env `FF_DASH_VERSION`}}-snapshot-{{timestamp}}",
+    "image_name": "flowfuse-{{env `FF_DASH_VERSION`}}-snapshot-{{timestamp}}",
     "apt_packages": "apt-transport-https ca-certificates curl jq linux-image-extra-virtual software-properties-common ",
-    "application_name": "FlowForge",
+    "application_name": "FlowFuse",
     "application_version": "{{env `FF_VERSION`}}",
-    "docker_compose_version": "v2.12.0"
+    "docker_compose_version": "v2.29.7"
   },
   "sensitive-variables": [
     "do_api_token"
@@ -69,8 +69,8 @@
         "scripts/011-docker-compose.sh",
         "scripts/012-grub-opts.sh",
         "scripts/013-docker-dns.sh",
-        "scripts/014-ufw-flowforge.sh",
-        "scripts/015-flowforge.sh",
+        "scripts/014-ufw-flowfuse.sh",
+        "scripts/015-flowfuse.sh",
         "scripts/016-first-run.sh",
         "scripts/020-application-tag.sh",
         "scripts/900-cleanup.sh",
@@ -79,8 +79,8 @@
     },
     {
       "type": "file",
-      "source": "files/opt/flowforge/",
-      "destination": "/opt/flowforge/"
+      "source": "files/opt/flowfuse/",
+      "destination": "/opt/flowfuse/"
     }
   ],
   "post-processors": [
