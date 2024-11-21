@@ -1,3 +1,8 @@
+#### 2.11.0: Release
+
+ - chore: Adjust scripts to run with new docker compose (#58)
+ - Update failure code (#57) @hardillb
+
 #### 2.10.0: Release
 
  - Fix typo (#55) @hardillb
