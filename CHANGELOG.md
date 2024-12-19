@@ -1,3 +1,6 @@
+#### 2.12.0: Release
+
+
 #### 2.11.0: Release
 
  - chore: Adjust scripts to run with new docker compose (#58)
