@@ -88,15 +88,5 @@
       "type": "manifest",
       "output": "manifest.json",
       "strip_path": true
-    },
-    {
-      "type": "shell-local",
-      "environment_vars": [
-        "application_version={{user `application_version`}}"
-      ],
-      "scripts": [
-        "scripts/market-place-submit.sh"
-      ]
     }
-  ]
 }
