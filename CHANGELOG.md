@@ -1,3 +1,7 @@
+#### 2.21.2: Release
+
+ - Remove marketplace update script as it will always fail (#76) @hardillb
+
 #### 2.21.1: Release
 
 
