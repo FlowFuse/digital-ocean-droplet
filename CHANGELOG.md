@@ -1,3 +1,7 @@
+#### 2.24.5: Release
+
+ - Bump actions/checkout from 6.0.0 to 6.0.1 (#90)
+
 #### 2.24.4: Release
 
 
