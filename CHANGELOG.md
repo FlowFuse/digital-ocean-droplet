@@ -1,3 +1,7 @@
+#### 2.26.1: Release
+
+ - Bump actions/checkout from 6.0.1 to 6.0.2 (#96)
+
 #### 2.26.0: Release
 
 
