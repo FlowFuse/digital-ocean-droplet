@@ -25,15 +25,16 @@ cat update.json
 
 echo ${FF_VERSION}
 
-echo https://api.digitalocean.com/api/v1/vendor-portal/apps/${APP_ID}/versions/${UPDATE_VERSION}
+echo https://api.digitalocean.com/api/v1/vendor-portal/apps/${APP_ID}
 
 curl --fail-with-body -X PATCH -H "Content-Type: application/json" -H "Authorization: Bearer ${DIGITALOCEAN_API_TOKEN}" \
-  -d @update.json  https://api.digitalocean.com/api/v1/vendor-portal/apps/${APP_ID}/versions/${UPDATE_VERSION}
+  -d @update.json  https://api.digitalocean.com/api/v1/vendor-portal/apps/${APP_ID}
 
 if [ $? -eq 0 ]
 then
+  echo "Digital Ocean Market Place update complete"
   rm update.json
 else
-  echo "Digitial Ocean Market Place update failed"
+  echo "Digital Ocean Market Place update failed"
   exit 1
 fi

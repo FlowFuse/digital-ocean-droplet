@@ -74,7 +74,7 @@
         "scripts/016-first-run.sh",
         "scripts/020-application-tag.sh",
         "scripts/900-cleanup.sh",
-	"scripts/999-img-check.sh"
+        "scripts/999-img-check.sh"
       ]
     },
     {
@@ -88,6 +88,15 @@
       "type": "manifest",
       "output": "manifest.json",
       "strip_path": true
+    },
+    {
+      "type": "shell-local",
+      "environment_vars": [
+        "application_version={{user `application_version`}}"
+      ],
+      "scripts": [
+        "scripts/market-place-submit.sh"
+      ]
     }
   ]
 }
