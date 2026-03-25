@@ -1,3 +1,7 @@
+#### 2.28.1: Release
+
+ - Turn on auto update again (#94) @hardillb
+
 #### 2.28.0: Release
 
 
