@@ -1,3 +1,8 @@
+#### 2.30.0: Release
+
+ - Bump hashicorp/setup-packer from 3.1.0 to 3.2.0 (#103)
+ - ci: Use new project-automation workflow (#106) @ppawlowski
+
 #### 2.29.1: Release
 
 
