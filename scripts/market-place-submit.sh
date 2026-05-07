@@ -11,7 +11,7 @@ cat << EOF > update.json
 {
   "reasonForUpdate": "new release",
   "version": "${FF_VERSION}",
-  "imageId": "${IMAGE_ID}",
+  "imageId": ${IMAGE_ID},
   "softwareIncluded": [
     { "name": "FlowFuse", "version": "${FF_VERSION}", "releaseNotes": "https://github.com/FlowFuse/flowfuse/releases/tag/v${FF_VERSION}" },
     { "name": "Ubuntu", "version": "22.04" },
