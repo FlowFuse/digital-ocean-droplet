@@ -1,3 +1,7 @@
+#### 2.30.1: Release
+
+ - ci: Fix the value type in the marketplace update json file (#109) @ppawlowski
+
 #### 2.30.0: Release
 
  - Bump hashicorp/setup-packer from 3.1.0 to 3.2.0 (#103)
