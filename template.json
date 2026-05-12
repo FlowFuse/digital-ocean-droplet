@@ -4,8 +4,7 @@
     "image_name": "flowfuse-{{env `FF_DASH_VERSION`}}-snapshot-{{timestamp}}",
     "apt_packages": "apt-transport-https ca-certificates curl jq linux-image-extra-virtual software-properties-common ",
     "application_name": "FlowFuse",
-    "application_version": "{{env `FF_VERSION`}}",
-    "docker_compose_version": "v2.29.7"
+    "application_version": "{{env `FF_VERSION`}}"
   },
   "sensitive-variables": [
     "do_api_token"
@@ -14,7 +13,7 @@
     {
       "type": "digitalocean",
       "api_token": "{{user `do_api_token`}}",
-      "image": "ubuntu-22-04-x64",
+      "image": "ubuntu-24-04-x64",
       "region": "lon1",
       "size": "s-1vcpu-1gb",
       "ssh_username": "root",
@@ -66,7 +65,6 @@
       ],
       "scripts": [
         "scripts/010-docker.sh",
-        "scripts/011-docker-compose.sh",
         "scripts/012-grub-opts.sh",
         "scripts/013-docker-dns.sh",
         "scripts/014-ufw-flowfuse.sh",
