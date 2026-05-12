@@ -14,9 +14,9 @@ cat << EOF > update.json
   "imageId": ${IMAGE_ID},
   "softwareIncluded": [
     { "name": "FlowFuse", "version": "${FF_VERSION}", "releaseNotes": "https://github.com/FlowFuse/flowfuse/releases/tag/v${FF_VERSION}" },
-    { "name": "Ubuntu", "version": "22.04" },
-    { "name": "Docker CE", "version": "20.10.21" },
-    { "name": "Docker Compose", "version": "2.12.0" }
+    { "name": "Ubuntu", "version": "24.04" },
+    { "name": "Docker CE", "version": "29.4.3" },
+    { "name": "Docker Compose", "version": "5.1.3" }
   ]
 }
 EOF
