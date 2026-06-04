@@ -1,3 +1,8 @@
+#### 2.31.0: Release
+
+ - ci: enable dependabot cooldown (#113) @ppawlowski
+ - Upgrade to Ubuntu 24.04 (#112) @hardillb
+
 #### 2.30.1: Release
 
  - ci: Fix the value type in the marketplace update json file (#109) @ppawlowski
