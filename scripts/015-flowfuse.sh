@@ -6,7 +6,7 @@ curl -L https://github.com/FlowFuse/docker-compose/archive/refs/tags/v${applicat
 docker pull flowfuse/node-red
 docker pull flowfuse/forge-docker
 docker pull flowfuse/file-server
-docker pull iegomez/mosquitto-go-auth
+docker pull emqx/emqx:5.8.0
 docker pull postgres:14
 docker pull nginxproxy/nginx-proxy
 docker pull nginxproxy/acme-companion
