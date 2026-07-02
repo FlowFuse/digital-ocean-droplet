@@ -1,3 +1,11 @@
+#### 2.32.0: Release
+
+ - Bump hashicorp/setup-packer from 3.3.0 to 3.4.0 (#121)
+ - Bump actions/checkout from 6.0.3 to 7.0.0 (#120)
+ - Bump actions/checkout from 6.0.2 to 6.0.3 (#115)
+ - Bump hashicorp/setup-packer from 3.2.0 to 3.3.0 (#114)
+ - ci: set dependabot pull request limit to 30 (#119)
+
 #### 2.31.3: Release
 
 
