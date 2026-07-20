@@ -1,3 +1,8 @@
+#### 2.32.1: Release
+
+ - ci: Add slack notification to the release pipeline (#124)
+ - Pull emqx not mosquitto (#123)
+
 #### 2.32.0: Release
 
  - Bump hashicorp/setup-packer from 3.3.0 to 3.4.0 (#121)
